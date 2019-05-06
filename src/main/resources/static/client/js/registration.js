@@ -40,7 +40,7 @@ $("#submit-register").click(function () {
                         "Authorization": "Basic: " + btoa(login + ":" + password)
                     },
                     success: function () {
-                        window.location.href = "/client/homePage.html";
+                        window.location.href = "/client/home-page.html";
                     },
                 })
             },

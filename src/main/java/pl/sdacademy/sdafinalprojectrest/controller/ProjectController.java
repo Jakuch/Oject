@@ -8,13 +8,11 @@ import pl.sdacademy.sdafinalprojectrest.model.dtos.ProjectDto;
 import pl.sdacademy.sdafinalprojectrest.model.project.Project;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 import pl.sdacademy.sdafinalprojectrest.repository.ProjectRepository;
-import pl.sdacademy.sdafinalprojectrest.repository.UserRepository;
 import pl.sdacademy.sdafinalprojectrest.service.UserDetailsServiceImpl;
 
-import java.security.Principal;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/projects")
@@ -32,37 +30,34 @@ public class ProjectController {
 
     @GetMapping
     public List<Project> getAllProjects() {
-        return projectRepository.findAll();
+
+        return projectRepository.findAll()
+                .stream()
+                .filter(project -> project.getContributors()
+                        .contains(getLoggedUser()))
+                .collect(Collectors.toList());
     }
-    
-    @GetMapping("{id}")
+
+    @GetMapping("/{id}")
     public Project getProjectById(@PathVariable Long id) {
         return projectRepository
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("No such project!"));
     }
-    
+
     @PostMapping
     public Project createProject(@RequestBody ProjectDto projectDto) {
 
-        Object principal = SecurityContextHolder.getContext()
-                .getAuthentication().getPrincipal();
-        String username;
-
-        if(principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
+        String username = getLoggedUsersName();
 
         User user = (User) userDetailsService.loadUserByUsername(username);
 
         Project project = new Project();
-            project.setTitle(projectDto.getTitle());
-            project.setDescription(projectDto.getDescription());
-            project.setProjectTabList(new ArrayList<>());
-            project.setAdmins(new ArrayList<>());
-            project.setContributors(new ArrayList<>());
+        project.setTitle(projectDto.getTitle());
+        project.setDescription(projectDto.getDescription());
+        project.setProjectTabList(new ArrayList<>());
+        project.setAdmins(new ArrayList<>());
+        project.setContributors(new ArrayList<>());
 
         project.addAdmin(user);
         project.addContributor(user);
@@ -70,17 +65,38 @@ public class ProjectController {
 
         return project;
     }
-    
-    @PutMapping("{id}")
+
+    @PutMapping("/{id}")
     public void editProject(@RequestBody ProjectDto projectDto, @PathVariable Long id) {
         Project projectToUpdate = getProjectById(id);
         projectToUpdate.setTitle(projectDto.getTitle());
         projectToUpdate.setDescription(projectDto.getDescription());
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteProject(@PathVariable Long id) {
-       projectRepository.findById(id)
-               .ifPresent(project -> projectRepository.delete(project));
+        projectRepository.findById(id)
+                .ifPresent(project -> projectRepository.delete(project));
+    }
+
+    private String getLoggedUsersName() {
+        Object principal = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        String username;
+
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails) principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+        return username;
+    }
+
+    private User getLoggedUser() {
+        String username = getLoggedUsersName();
+        return (User) userDetailsService.loadUserByUsername(username);
     }
 }

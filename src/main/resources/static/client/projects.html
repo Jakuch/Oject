@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
->
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Projects</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet/css" href="style.css">
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -19,9 +18,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-    <script src="js/projects-script.js" defer></script>
+    <script src="js/create-project.js" defer></script>
     <script src="js/jquery-3.3.1.min.js" defer></script>
-    <script src="js/projects-view-script.js" defer></script>
+    <script src="js/projects-view.js" defer></script>
 </head>
 <body>
 <div class="container-fluid" style="margin-bottom: 10px">
@@ -35,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="homePage.html">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="home-page.html">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Projects</a>
@@ -65,16 +64,16 @@
                 <h1 class="card-header">
                     Projects
                 </h1>
-                <div class="list-group">
-                    <project id="project-view-template">
-                        <a class="project-id-link list-group-item list-group-item-action">
+                <div class="list-group" id="projects-list">
+                    <div id="project-view-template">
+                        <div class="project-id-link list-group-item list-group-item-action">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="disp-project-title mb-1">proj title</h5>
+                                <h5 class="disp-project-title mb-1"></h5>
                             </div>
-                            <p class="disp-project-description mb-1" >proj desc</p>
-                        </a>
-                    </project>
-                    <a href="newProject.html" class="list-group-item list-group-item-action">
+                            <p class="disp-project-description mb-1" ></p>
+                        </div>
+                    </div>
+                    <a href="create-project.html" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Add new project</h5>
                         </div>

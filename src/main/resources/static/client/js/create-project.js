@@ -21,7 +21,7 @@ $("#create-project").click(function () {
         data: JSON.stringify(newProject),
         contentType: "application/json",
         success: function () {
-            window.location.href = "/client/projectView.html";
+            window.location.href = "/client/projects.html";
         }
 
     })
