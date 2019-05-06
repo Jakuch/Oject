@@ -16,3 +16,6 @@
 .is-invalid{
     border: solid red 1px;
 }
+.project-task {
+    margin-bottom: 5px;
+}
