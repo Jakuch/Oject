@@ -1,0 +1,18 @@
+.dropdown-list-sticky{
+    position: sticky;
+}
+.sticky-footer{
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    font-size: 9px;
+}
+.small-font-tab-footer{
+    font-size: 11px;
+}
+.profile-page-buttons{
+    margin-top: 5px;
+}
+.is-invalid{
+    border: solid red 1px;
+}
