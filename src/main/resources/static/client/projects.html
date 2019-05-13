@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+>
 <head>
     <meta charset="UTF-8">
     <title>Projects</title>
-    <link rel="stylesheet/css" href="style.css">
+    <link rel="stylesheet/css" href="../client/css/style.css">
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -33,23 +33,23 @@
 
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="home-page.html">Home<span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
+                    <a class="nav-link" href="home-page.html">Home</a>
+                </li>
+                <li class="nav-item  active">
+                    <a class="nav-link" href="projects.html">Projects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Teams</a>
                 </li>
             </ul>
             <ul class="dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0">
-                <li class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                <li class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Account
                 </li>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="account.html">Profile</a>
+                    <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="#">Settings</a>
                     <button class="dropdown-item" id="submit-logout">Logout</button>
                 </div>
@@ -61,25 +61,31 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card text-center">
-                <h1 class="card-header">
+                <h1 class="card-header bg-info">
                     Projects
                 </h1>
-                <div class="list-group" id="projects-list">
-                    <div id="project-view-template">
-                        <div class="project-id-link list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="disp-project-title mb-1"></h5>
-                            </div>
-                            <p class="disp-project-description mb-1" ></p>
-                        </div>
+                <table class="table-bordered table-hover" id="projects-list">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="project-view-template">
+                        <td class="disp-project-title"></td>
+                        <td class="disp-project-description"></td>
+                        <td class="project-id-link"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="create-project.html" class="list-group-item list-group-item-action hover">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Add new project</h5>
                     </div>
-                    <a href="create-project.html" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Add new project</h5>
-                        </div>
-                        <p class="mb-1"></p>
-                    </a>
-                </div>
+                    <div class="mb-1"></div>
+                </a>
             </div>
 
         </div>

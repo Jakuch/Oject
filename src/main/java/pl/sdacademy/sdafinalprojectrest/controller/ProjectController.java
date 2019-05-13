@@ -12,7 +12,6 @@ import pl.sdacademy.sdafinalprojectrest.service.UserDetailsServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/projects")
@@ -31,11 +30,7 @@ public class ProjectController {
     @GetMapping
     public List<Project> getAllProjects() {
 
-        return projectRepository.findAll()
-                .stream()
-                .filter(project -> project.getContributors()
-                        .contains(getLoggedUser()))
-                .collect(Collectors.toList());
+        return projectRepository.findAll();
     }
 
     @GetMapping("/{id}")
