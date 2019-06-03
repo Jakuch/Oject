@@ -13,7 +13,7 @@ function reloadView(){
 
                 $trProject.removeAttr("id");
                 $trProject.children(".disp-project-title").html('<h5>' + project.title + '</h5>');
-                $trProject.children(".project-id-link").html('<a class="btn btn-primary" href="project.html#"' + project.id + '>' + "Go to project" + '</a>');
+                $trProject.children(".project-id-link").html('<a class="btn btn-primary" href="project.html#' + project.id + '">' + "Go to project" +'</a>');
                 $trProject.children(".disp-project-description").text(project.description);
 
                 $tBody.append($trProject);

@@ -17,7 +17,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous" defer></script>
+    <script src="js/jquery-3.3.1.min.js" defer></script>
     <script src="js/single-project-view.js" defer></script>
+    <script src="js/add-project-tab.js" defer></script>
 </head>
 <body>
 <div class="container-fluid" style="margin-bottom: 10px">
@@ -65,14 +67,11 @@
         </div>
     </div>
     <div class="row" style="margin: 5px 0px 15px 0px">
-        <div class="col-sm-3">
-            <div class="card">
+        <div class="row" id="cards-list">
+            <div class="card project-card" id="card-template">
                 <div class="card-body">
                     <h5 class="card-title">Project card</h5>
                     <div class="col">
-                        <div class="card project-task">
-                            <p class="card-header">Task title</p>
-                        </div>
                         <div class="card project-task">
                             <p class="card-header">Task title</p>
                         </div>
@@ -84,7 +83,17 @@
                 </div>
             </div>
         </div>
+        <div class="card project-card h-25">
+            <div class="card-body">
+                <div class="card-title">Title:</div>
+                <form class="project-task" style="text-align: center">
+                    <input type="text" id="card-title" style="margin-bottom: 10px;">
+                    <button class="card-header btn" id="create-card">Create new card</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+
 </body>
 </html>

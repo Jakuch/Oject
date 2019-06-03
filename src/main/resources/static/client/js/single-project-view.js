@@ -1,4 +1,6 @@
 const id = window.location.hash.substr(1);
+console.log(id);
+
 $.ajax({
     url: "http://localhost:8080/projects/" + id,
     method: "get",
