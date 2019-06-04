@@ -29,6 +29,11 @@ public class Project {
     @JoinTable
     private List<User> contributors;
 
+    public Project(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public void addAdmin(User user){
         admins.add(user);
     }
