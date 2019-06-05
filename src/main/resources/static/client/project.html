@@ -58,7 +58,7 @@
 </div>
 
 <div class="container">
-    <div class="card">
+    <div class="card" style="margin-bottom: 10px">
         <div class="card-header">
             <h2 id="disp-project-title-single">
             </h2>
@@ -66,28 +66,29 @@
             </p>
         </div>
     </div>
-    <div class="row" style="margin: 5px 0px 15px 0px">
-        <div class="row" id="cards-list">
-            <div class="card project-card" id="card-template">
-                <div class="card-body">
-                    <h5 class="card-title">Project card</h5>
-                    <div class="col">
-                        <div class="card project-task">
-                            <p class="card-header">Task title</p>
+    <div class="container-fluid row">
+        <div class="row" id="tab-list">
+            <div id="tab-template" style="display: none">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h5 class="tab-title">Project card</h5>
+                        <div class="col">
+                            <div class="card tab-task">
+                                <p class="card-header">Task title</p>
+                            </div>
                         </div>
+                        <a href="#" class="btn btn-primary">Go to card</a>
                     </div>
-                    <a href="#" class="btn btn-primary">Go to card</a>
-                </div>
-                <div class="small-font-tab-footer card-footer text-muted">
-                    Last updated by
+                    <div class="small-font-tab-footer card-footer text-muted">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card project-card h-25">
+        <div class="card project-card h-25" style="margin-left: 15px;">
             <div class="card-body">
-                <div class="card-title">Title:</div>
-                <form class="project-task" style="text-align: center">
-                    <input type="text" id="card-title" style="margin-bottom: 10px;">
+                <div>Title:</div>
+                <form class="tab-task" style="text-align: center">
+                    <input type="text" id="tab-title-submit" style="margin-bottom: 5px;">
                     <button class="card-header btn" id="create-card">Create new card</button>
                 </form>
             </div>

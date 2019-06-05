@@ -1,5 +1,6 @@
 package pl.sdacademy.sdafinalprojectrest.service;
 
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,16 +13,14 @@ import pl.sdacademy.sdafinalprojectrest.repository.ProjectRepository;
 import java.util.ArrayList;
 
 @Service
+@NoArgsConstructor
 public class ProjectService {
 
+    @Autowired
     private ProjectRepository projectRepository;
+    @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
-    public ProjectService(ProjectRepository projectRepository, UserDetailsServiceImpl userDetailsService) {
-        this.projectRepository = projectRepository;
-        this.userDetailsService = userDetailsService;
-    }
 
     public ProjectRepository getProjectRepository() {
         return projectRepository;
