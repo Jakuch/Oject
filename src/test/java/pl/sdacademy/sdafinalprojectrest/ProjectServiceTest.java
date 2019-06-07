@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.junit4.SpringRunner;
+import pl.sdacademy.sdafinalprojectrest.model.dtos.ProjectDto;
 import pl.sdacademy.sdafinalprojectrest.model.project.Project;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 import pl.sdacademy.sdafinalprojectrest.repository.ProjectRepository;
@@ -18,11 +18,9 @@ import pl.sdacademy.sdafinalprojectrest.service.ProjectService;
 import pl.sdacademy.sdafinalprojectrest.service.UserDetailsServiceImpl;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringRunner.class)
 public class ProjectServiceTest {
@@ -73,6 +71,18 @@ public class ProjectServiceTest {
     }
 
     @Test
+    public void shouldReturnProjectRepository(){
+        ProjectRepository found = projectService.getProjectRepository();
+        assertEquals(found, projectRepository);
+    }
+
+    @Test
+    public void shouldReturnUserDetailsService(){
+        UserDetailsServiceImpl found = projectService.getUserDetailsService();
+        assertEquals(found, userDetailsService);
+    }
+
+    @Test
     public void whenValidTitle_shouldFindProject() {
         String title = "TestProject";
         Project foundProject = projectService.getProjectRepository().findProjectByTitle(title);
@@ -84,11 +94,30 @@ public class ProjectServiceTest {
     @Test
     public void testGetSingleProjectById() {
         long id = 1;
-
         Project singleProjectById = projectService.getSingleProjectById(id);
 
         assertEquals(singleProjectById, new Project());
+    }
 
+    @Test
+    public void testUpdateProject(){
+        ProjectDto projectDto = new ProjectDto("ProjectDtoTitle", "ProjectDtoDescription");
+        Project updatedProject = projectService.updateProject(projectDto, 1L);
 
+        assertEquals(updatedProject.getTitle(), projectDto.getTitle());
+        assertEquals(updatedProject.getDescription(), projectDto.getDescription());
+    }
+
+    @Test
+    public void testSetProject(){
+        Project projectToGet = new Project("First", "Description",
+                new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        Project projectToSet = new Project("Second", "Description");
+
+        assertNotEquals(projectToSet, projectToGet);
+
+        Project project = projectService.setProject(projectToSet, projectToGet);
+
+        assertEquals(project, projectToGet);
     }
 }

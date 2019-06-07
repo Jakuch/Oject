@@ -2,8 +2,6 @@ package pl.sdacademy.sdafinalprojectrest.service;
 
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import pl.sdacademy.sdafinalprojectrest.model.dtos.ProjectDto;
 import pl.sdacademy.sdafinalprojectrest.model.project.Project;
@@ -48,9 +46,8 @@ public class ProjectService {
 
     public Project createNewProject(ProjectDto projectDto){
 
-        String username = userDetailsService.getLoggedUsersName();
-
-        User user = (User) userDetailsService.loadUserByUsername(username);
+        String loggedUserName = userDetailsService.getLoggedUserName();
+        User user = (User) userDetailsService.loadUserByUsername(loggedUserName);
 
         Project project = new Project();
         project.setTitle(projectDto.getTitle());
@@ -66,10 +63,11 @@ public class ProjectService {
         return project;
     }
 
-    public void updateProject(ProjectDto projectDto, Long id){
+    public Project updateProject(ProjectDto projectDto, Long id){
         Project projectToUpdate = getSingleProjectById(id);
         projectToUpdate.setTitle(projectDto.getTitle());
         projectToUpdate.setDescription(projectDto.getDescription());
+        return projectToUpdate;
     }
 
     public void deleteProject(Long id){

@@ -8,4 +8,9 @@ import lombok.NoArgsConstructor;
 public class ProjectDto {
     private String title;
     private String description;
+
+    public ProjectDto(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 }
