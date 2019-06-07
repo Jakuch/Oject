@@ -17,5 +17,5 @@ public class ProjectTab {
     private Long id;
     private String tabName;
     @OneToMany
-    private List<ProjectTask> projectTask;
+    private List<TabTask> tabTask;
 }

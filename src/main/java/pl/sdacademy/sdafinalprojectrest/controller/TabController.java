@@ -9,34 +9,27 @@ import pl.sdacademy.sdafinalprojectrest.model.dtos.TabDto;
 import pl.sdacademy.sdafinalprojectrest.model.project.ProjectTab;
 import pl.sdacademy.sdafinalprojectrest.repository.ProjectRepository;
 import pl.sdacademy.sdafinalprojectrest.repository.ProjectTabRepository;
+import pl.sdacademy.sdafinalprojectrest.service.ProjectService;
+import pl.sdacademy.sdafinalprojectrest.service.TabService;
 import pl.sdacademy.sdafinalprojectrest.service.UserDetailsServiceImpl;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/cards")
+@RequestMapping("/tabs")
 public class TabController {
 
-    private ProjectTabRepository projectTabRepository;
-    private ProjectRepository projectRepository;
-    private UserDetailsServiceImpl userDetailsService;
-
     @Autowired
-    public TabController(ProjectTabRepository projectTabRepository,
-                         ProjectRepository projectRepository,
-                         UserDetailsServiceImpl userDetailsService) {
-        this.projectTabRepository = projectTabRepository;
-        this.projectRepository = projectRepository;
-        this.userDetailsService = userDetailsService;
-    }
+    private TabService tabService;
 
     @GetMapping
     public List<ProjectTab> getAll(){
-        return projectTabRepository.findAll();
+        return tabService.getTabRepository().findAll();
     }
 
     @PostMapping
     public ProjectTab createProjectTab(TabDto tabDto){
+
         return null;
     }
 }

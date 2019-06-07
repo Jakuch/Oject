@@ -83,4 +83,8 @@ public class ProjectService {
         projectToSet.setContributors(projectToGet.getContributors());
         return projectToSet;
     }
+
+    public Project findProjectByTabName(String tabName){
+       return null; //TODO
+    }
 }
