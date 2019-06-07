@@ -45,6 +45,19 @@ public class User implements UserDetails {
         this.role = role;
     }
 
+    public User(@NotNull String username,
+                @NotNull @Length(min = 8) String password,
+                @NotNull String email, Role role,
+                List<Project> administratedProjects,
+                List<Project> contributions) {
+
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.administratedProjects = administratedProjects;
+        this.contributions = contributions;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

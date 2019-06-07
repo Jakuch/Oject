@@ -36,7 +36,7 @@ public class ProjectService {
         projectRepository.findById(id)
                 .ifPresent(project -> {
                     boolean contains = project.getContributors()
-                            .contains(getLoggedUser());
+                            .contains(userDetailsService.getLoggedUser());
                     if (contains) {
                         setProject(userProject, project);
                     } else {
@@ -48,7 +48,7 @@ public class ProjectService {
 
     public Project createNewProject(ProjectDto projectDto){
 
-        String username = getLoggedUsersName();
+        String username = userDetailsService.getLoggedUsersName();
 
         User user = (User) userDetailsService.loadUserByUsername(username);
 
@@ -75,27 +75,6 @@ public class ProjectService {
     public void deleteProject(Long id){
         projectRepository.findById(id)
                 .ifPresent(project -> projectRepository.delete(project));
-    }
-
-    public String getLoggedUsersName() {
-        Object principal = SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getPrincipal();
-
-        String username;
-
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
-        return username;
-    }
-
-    public User getLoggedUser() {
-        String username = getLoggedUsersName();
-        return (User) userDetailsService.loadUserByUsername(username);
     }
 
     public Project setProject(Project projectToSet, Project projectToGet) {

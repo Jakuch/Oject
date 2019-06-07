@@ -34,11 +34,22 @@ public class Project {
         this.description = description;
     }
 
+    public Project(String title, String description, List<ProjectTab> projectTabList, List<User> admins, List<User> contributors) {
+        this.title = title;
+        this.description = description;
+        this.projectTabList = projectTabList;
+        this.admins = admins;
+        this.contributors = contributors;
+    }
+
     public void addAdmin(User user){
+        user.getAdministratedProjects().add(this);
+        user.getContributions().add(this);
         admins.add(user);
     }
 
     public void addContributor(User user){
+        user.getContributions().add(this);
         contributors.add(user);
     }
 

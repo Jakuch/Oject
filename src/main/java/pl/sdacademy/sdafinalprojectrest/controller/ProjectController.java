@@ -19,7 +19,7 @@ public class ProjectController {
     @GetMapping
     public List<Project> getAllProjects() {
         return projectService.getProjectRepository()
-                .findProjectsByContributors(projectService.getLoggedUser());
+                .findProjectsByContributors(projectService.getUserDetailsService().getLoggedUser());
 
     }
 
