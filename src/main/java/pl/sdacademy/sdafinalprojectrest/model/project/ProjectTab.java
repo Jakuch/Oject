@@ -18,4 +18,9 @@ public class ProjectTab {
     private String tabName;
     @OneToMany
     private List<TabTask> tabTask;
+
+    public ProjectTab(String tabName, List<TabTask> tabTask) {
+        this.tabName = tabName;
+        this.tabTask = tabTask;
+    }
 }

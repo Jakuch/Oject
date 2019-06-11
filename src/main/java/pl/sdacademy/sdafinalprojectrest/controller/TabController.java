@@ -7,11 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.sdacademy.sdafinalprojectrest.model.dtos.TabDto;
 import pl.sdacademy.sdafinalprojectrest.model.project.ProjectTab;
-import pl.sdacademy.sdafinalprojectrest.repository.ProjectRepository;
-import pl.sdacademy.sdafinalprojectrest.repository.ProjectTabRepository;
-import pl.sdacademy.sdafinalprojectrest.service.ProjectService;
 import pl.sdacademy.sdafinalprojectrest.service.TabService;
-import pl.sdacademy.sdafinalprojectrest.service.UserDetailsServiceImpl;
 
 import java.util.List;
 

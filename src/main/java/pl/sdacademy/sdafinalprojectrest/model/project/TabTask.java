@@ -18,9 +18,13 @@ public class TabTask {
     private Long id;
     private String title;
     private String description;
-    private Integer storyPoints;
-    private LocalDateTime deadline;
+//    private Integer storyPoints;
+//    private LocalDateTime deadline;
     @OneToMany
     private List<User> contributors;
 
+    public TabTask(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 }
