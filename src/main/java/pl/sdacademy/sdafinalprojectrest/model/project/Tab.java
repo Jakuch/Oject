@@ -10,17 +10,17 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Data
-public class ProjectTab {
+public class Tab {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String tabName;
     @OneToMany
-    private List<TabTask> tabTask;
+    private List<Task> task;
 
-    public ProjectTab(String tabName, List<TabTask> tabTask) {
+    public Tab(String tabName, List<Task> task) {
         this.tabName = tabName;
-        this.tabTask = tabTask;
+        this.task = task;
     }
 }

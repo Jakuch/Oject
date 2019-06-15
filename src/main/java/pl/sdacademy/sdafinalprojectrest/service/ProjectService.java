@@ -52,7 +52,7 @@ public class ProjectService {
         Project project = new Project();
         project.setTitle(projectDto.getTitle());
         project.setDescription(projectDto.getDescription());
-        project.setProjectTabList(new ArrayList<>());
+        project.setTabList(new ArrayList<>());
         project.setAdmins(new ArrayList<>());
         project.setContributors(new ArrayList<>());
 
@@ -78,7 +78,7 @@ public class ProjectService {
     public Project setProject(Project projectToSet, Project projectToGet) {
         projectToSet.setTitle(projectToGet.getTitle());
         projectToSet.setDescription(projectToGet.getDescription());
-        projectToSet.setProjectTabList(projectToGet.getProjectTabList());
+        projectToSet.setTabList(projectToGet.getTabList());
         projectToSet.setAdmins(projectToGet.getAdmins());
         projectToSet.setContributors(projectToGet.getContributors());
         return projectToSet;

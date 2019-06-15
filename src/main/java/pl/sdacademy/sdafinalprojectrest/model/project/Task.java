@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Data
-public class TabTask {
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class TabTask {
     @OneToMany
     private List<User> contributors;
 
-    public TabTask(String title, String description) {
+    public Task(String title, String description) {
         this.title = title;
         this.description = description;
     }

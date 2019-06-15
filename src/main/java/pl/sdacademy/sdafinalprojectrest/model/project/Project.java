@@ -5,10 +5,7 @@ import lombok.NoArgsConstructor;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -21,7 +18,7 @@ public class Project {
     private String title;
     private String description;
     @OneToMany
-    private List<ProjectTab> projectTabList;
+    private List<Tab> tabList;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable
     private List<User> admins;
@@ -34,10 +31,10 @@ public class Project {
         this.description = description;
     }
 
-    public Project(String title, String description, List<ProjectTab> projectTabList, List<User> admins, List<User> contributors) {
+    public Project(String title, String description, List<Tab> tabList, List<User> admins, List<User> contributors) {
         this.title = title;
         this.description = description;
-        this.projectTabList = projectTabList;
+        this.tabList = tabList;
         this.admins = admins;
         this.contributors = contributors;
     }
@@ -53,7 +50,7 @@ public class Project {
         contributors.add(user);
     }
 
-    public void createTab(ProjectTab tab) {
-        projectTabList.add(tab);
+    public void createTab(Tab tab) {
+        tabList.add(tab);
     }
 }

@@ -5,13 +5,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
-import pl.sdacademy.sdafinalprojectrest.model.project.Project;
-import pl.sdacademy.sdafinalprojectrest.model.project.ProjectTab;
-import pl.sdacademy.sdafinalprojectrest.model.project.TabTask;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 import pl.sdacademy.sdafinalprojectrest.repository.UserRepository;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

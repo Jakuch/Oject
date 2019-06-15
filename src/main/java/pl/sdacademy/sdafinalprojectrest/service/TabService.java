@@ -4,8 +4,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sdacademy.sdafinalprojectrest.model.project.Project;
-import pl.sdacademy.sdafinalprojectrest.model.project.ProjectTab;
-import pl.sdacademy.sdafinalprojectrest.repository.ProjectTabRepository;
+import pl.sdacademy.sdafinalprojectrest.model.project.Tab;
+import pl.sdacademy.sdafinalprojectrest.repository.TabRepository;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -15,27 +15,27 @@ import java.util.Optional;
 public class TabService {
 
     @Autowired
-    private ProjectTabRepository tabRepository;
+    private TabRepository tabRepository;
     @Autowired
     private ProjectService projectService;
 
 
-    public ProjectTabRepository getTabRepository() {
+    public TabRepository getTabRepository() {
         return tabRepository;
     }
 
-    public ProjectTab createTab(String tabName, Long projectId){
+    public Tab createTab(String tabName, Long projectId){
 
-        ProjectTab projectTab = new ProjectTab();
-        projectTab.setTabName(tabName);
-        projectTab.setTabTask(new ArrayList<>());
+        Tab tab = new Tab();
+        tab.setTabName(tabName);
+        tab.setTask(new ArrayList<>());
         Optional<Project> projectById = projectService.getProjectRepository().findById(projectId);
-        projectById.ifPresent(project -> project.getProjectTabList().add(projectTab));
-        tabRepository.save(projectTab);
-        return projectTab;
+        projectById.ifPresent(project -> project.getTabList().add(tab));
+        tabRepository.save(tab);
+        return tab;
     }
 
-    public void setTabRepository(ProjectTabRepository tabRepository) {
+    public void setTabRepository(TabRepository tabRepository) {
         this.tabRepository = tabRepository;
     }
 
