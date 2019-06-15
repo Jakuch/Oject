@@ -1,37 +1,22 @@
 $("#create-card").click(function () {
     event.preventDefault();
 
-    const tabTitle = $("#tab-title-submit");
+    const tabName = $("#tab-title-submit").val();
+    const projectId = window.location.hash.substr(1);
 
     const projectTab = {
-        title: tabTitle,
-    }
+        tabName: tabName,
+        projectId: projectId
+    };
+
     $.ajax({
         url: "http://localhost:8080/tabs",
         data: JSON.stringify(projectTab),
         method: "post",
         contentType: "application/json",
         success: function () {
-            reloadView()
+            location.reload()
+            // window.location.href = "/client/project.html#" + projectId;
         }
     })
 });
-
-function reloadView() {
-    $.ajax({
-            url: "http://localhost:8080/tabs",
-            method: "get",
-            success: function (tabs) {
-                const $tabTemplate = $("#tab-template").html();
-                const $tabsList = $("#tab-list")
-
-                for (let i = 0; i < tabs.length; i++) {
-                    const tab = tabs[i];
-
-
-                    $tabsList.append($tabTemplate);
-                }
-            }
-        }
-    )
-}

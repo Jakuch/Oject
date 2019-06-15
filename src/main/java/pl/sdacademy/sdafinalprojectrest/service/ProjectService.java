@@ -84,7 +84,4 @@ public class ProjectService {
         return projectToSet;
     }
 
-    public Project findProjectByTabName(String tabName){
-       return null; //TODO
-    }
 }

@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TabDto {
     private String tabName;
+    private Long projectId;
 }

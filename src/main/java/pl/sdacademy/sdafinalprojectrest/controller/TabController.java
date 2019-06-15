@@ -1,10 +1,7 @@
 package pl.sdacademy.sdafinalprojectrest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.sdafinalprojectrest.model.dtos.TabDto;
 import pl.sdacademy.sdafinalprojectrest.model.project.ProjectTab;
 import pl.sdacademy.sdafinalprojectrest.service.TabService;
@@ -24,8 +21,8 @@ public class TabController {
     }
 
     @PostMapping
-    public ProjectTab createProjectTab(TabDto tabDto){
-
-        return null;
+    public ProjectTab createProjectTab(@RequestBody TabDto tabDto){
+        return tabService.createTab(tabDto.getTabName(), tabDto.getProjectId());
     }
+
 }
