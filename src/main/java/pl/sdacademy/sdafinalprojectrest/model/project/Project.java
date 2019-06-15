@@ -17,7 +17,8 @@ public class Project {
     private Long id;
     private String title;
     private String description;
-    @OneToMany
+    @OneToMany(mappedBy = "project",
+            cascade = CascadeType.ALL)
     private List<Tab> tabList;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable
@@ -39,13 +40,13 @@ public class Project {
         this.contributors = contributors;
     }
 
-    public void addAdmin(User user){
+    public void addAdmin(User user) {
         user.getAdministratedProjects().add(this);
         user.getContributions().add(this);
         admins.add(user);
     }
 
-    public void addContributor(User user){
+    public void addContributor(User user) {
         user.getContributions().add(this);
         contributors.add(user);
     }

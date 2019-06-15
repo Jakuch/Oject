@@ -22,7 +22,7 @@ public class TabController {
 
     @PostMapping
     public Tab createProjectTab(@RequestBody TabDto tabDto){
-        return tabService.createTab(tabDto.getTabName(), tabDto.getProjectId());
+        return tabService.createTab(tabDto);
     }
 
 }

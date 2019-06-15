@@ -7,11 +7,11 @@ $.ajax({
         $("#tab-template").hide();
         $("#disp-project-title-single").text(project.title);
         $("#disp-project-description-single").text(project.description);
-        reloadTabs();
+        reloadTabs(project);
     }
 });
 
-function reloadTabs() {
+function reloadTabs(project) {
     $.ajax({
             url: "http://localhost:8080/tabs",
             method: "get",
@@ -20,11 +20,14 @@ function reloadTabs() {
                 const $tabsList = $("#tab-list")
 
                 for (let i = 0; i < tabs.length; i++) {
-                    const tab = tabs[i];
-                    const $projectTab = $tabTemplate.clone();
+                    if (tabs.projectId == project.id) {
 
-                    $projectTab.find(".tab-title").html(tab.tabName);
-                    $tabsList.append($projectTab.html());
+                        const tab = tabs[i];
+                        const $projectTab = $tabTemplate.clone();
+
+                        $projectTab.find(".tab-title").html(tab.tabName);
+                        $tabsList.append($projectTab.html());
+                    }
                 }
             }
         }

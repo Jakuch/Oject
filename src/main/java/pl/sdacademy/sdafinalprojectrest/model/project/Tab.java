@@ -16,11 +16,11 @@ public class Tab {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String tabName;
-    @OneToMany
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
+    private Project project;
+    @OneToMany(mappedBy = "tab",
+            cascade = CascadeType.ALL)
     private List<Task> task;
 
-    public Tab(String tabName, List<Task> task) {
-        this.tabName = tabName;
-        this.task = task;
-    }
 }

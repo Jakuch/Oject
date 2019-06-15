@@ -18,6 +18,9 @@ public class Task {
     private Long id;
     private String title;
     private String description;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tab_id")
+    private Tab tab;
 //    private Integer storyPoints;
 //    private LocalDateTime deadline;
     @OneToMany
