@@ -17,17 +17,16 @@ function reloadTabs(project) {
             method: "get",
             success: function (tabs) {
                 const $tabTemplate = $("#tab-template");
-                const $tabsList = $("#tab-list")
+                const $tabsList = $("#tab-list");
 
                 for (let i = 0; i < tabs.length; i++) {
-                    if (tabs.projectId == project.id) {
 
-                        const tab = tabs[i];
-                        const $projectTab = $tabTemplate.clone();
+                    const tab = tabs[i];
+                    const $projectTab = $tabTemplate.clone();
 
-                        $projectTab.find(".tab-title").html(tab.tabName);
-                        $tabsList.append($projectTab.html());
-                    }
+                    $projectTab.find(".tab-title").html(tab.tabName);
+
+                    $tabsList.append($projectTab.html());
                 }
             }
         }
