@@ -15,7 +15,7 @@ $("#create-card").click(function () {
         method: "post",
         contentType: "application/json",
         success: function () {
-            window.location.href = "/client/project.html#" + projectId;
+            location.reload();
         }
     })
 });
