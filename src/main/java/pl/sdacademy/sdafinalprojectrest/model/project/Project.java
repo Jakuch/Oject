@@ -2,6 +2,7 @@ package pl.sdacademy.sdafinalprojectrest.model.project;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@ToString(exclude = {"tabList"})
 public class Project {
 
     @Id
@@ -17,8 +19,7 @@ public class Project {
     private Long id;
     private String title;
     private String description;
-    @OneToMany(mappedBy = "project",
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "project")
     private List<Tab> tabList;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable
@@ -51,7 +52,4 @@ public class Project {
         contributors.add(user);
     }
 
-    public void createTab(Tab tab) {
-        tabList.add(tab);
-    }
 }

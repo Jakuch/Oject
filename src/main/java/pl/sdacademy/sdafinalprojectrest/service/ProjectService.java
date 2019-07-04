@@ -63,8 +63,8 @@ public class ProjectService {
         return project;
     }
 
-    public Project updateProject(ProjectDto projectDto, Long id){
-        Project projectToUpdate = getSingleProjectById(id);
+    public Project updateProject(ProjectDto projectDto, Long projectIdToUpdate){
+        Project projectToUpdate = getSingleProjectById(projectIdToUpdate);
         projectToUpdate.setTitle(projectDto.getTitle());
         projectToUpdate.setDescription(projectDto.getDescription());
         return projectToUpdate;
@@ -81,6 +81,7 @@ public class ProjectService {
         projectToSet.setTabList(projectToGet.getTabList());
         projectToSet.setAdmins(projectToGet.getAdmins());
         projectToSet.setContributors(projectToGet.getContributors());
+        projectRepository.save(projectToSet);
         return projectToSet;
     }
 

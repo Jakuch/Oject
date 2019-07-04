@@ -29,14 +29,19 @@ public class TabService {
     }
 
     public Tab createTab(TabDto tabDto) {
-//TODO not working properly, project field is null
-        Tab tab = new Tab();
-        tab.setTabName(tabDto.getTabName());
-        tab.setTask(new ArrayList<>());
-        Optional<Project> foundProject = projectService.getProjectRepository()
-                .findById(tabDto.getProjectId());
-        foundProject.ifPresent(project -> project.createTab(tab));
+
+        Project foundProject = projectService.getProjectRepository()
+                .findById(tabDto.getProjectId())
+                .orElseThrow(() -> new RuntimeException("No such project exists"));
+
+        Tab tab = new Tab(tabDto.getTabName(), foundProject, new ArrayList<>());
+
+        Project updatedProject = foundProject;
+        updatedProject.getTabList().add(tab);
+
+        projectService.setProject(foundProject, updatedProject);
         tabRepository.save(tab);
+
         return tab;
     }
 
