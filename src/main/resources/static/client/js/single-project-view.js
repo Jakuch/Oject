@@ -1,7 +1,7 @@
-const id = window.location.hash.substr(1);
+const projectId = window.location.hash.substr(1);
 
 $.ajax({
-    url: "http://localhost:8080/projects/" + id,
+    url: "http://localhost:8080/projects/" + projectId,
     method: "get",
     success: function (project) {
         $("#tab-template").hide();
@@ -13,7 +13,7 @@ $.ajax({
 
 function reloadTabs() {
     $.ajax({
-            url: "http://localhost:8080/tabs/project/" + id,
+            url: "http://localhost:8080/tabs/project/" + projectId,
             method: "get",
             success: function (tabs) {
                 const $tabTemplate = $("#tab-template");
@@ -25,6 +25,7 @@ function reloadTabs() {
                     const $projectTab = $tabTemplate.clone();
 
                     $projectTab.find(".tab-title").html(tab.tabName);
+                    $projectTab.find(".tab-id-link").html('<a class="btn btn-primary" href="tab.html#' + tab.id + '">' + "Go to card" +'</a>');
 
                     $tabsList.append($projectTab.html());
 

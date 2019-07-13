@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Project</title>
+    <title>Card</title>
     <link rel="stylesheet" href="../client/css/style.css">
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -18,10 +18,9 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous" defer></script>
     <script src="js/jquery-3.3.1.min.js" defer></script>
-    <script src="js/single-project-view.js" defer></script>
-    <script src="js/add-project-tab.js" defer></script>
     <script src="js/login-logout.js" defer></script>
     <script src="js/tab-view.js" defer></script>
+    <script src="js/add-task.js" defer></script>
 </head>
 <body>
 <div class="container-fluid" style="margin-bottom: 10px">
@@ -61,53 +60,51 @@
 
 <div class="container">
     <div class="card" style="margin-bottom: 10px">
-        <div class="card-header col">
+        <div class="card-header">
             <div class="row">
-                <div class="col-9" style="margin-left: 10px;">
-                    <h2 class="row" id="disp-project-title-single">
-                    </h2>
-                    <p class="row" id="disp-project-description-single">
-                    </p>
-                </div>
-                <ul class="dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0 col-3">
-                    <li class="nav-link dropdown-toggle" id="project-nav-bar"
+                <h2 class="col-10" id="disp-tab-title-single">
+                </h2>
+                <a href="../client/create-task.html" class="text-center text-nowrap btn btn-light col-1">
+                    Add task</a>
+                <ul class="dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0 col-1">
+                    <li class=" text-reset nav-link dropdown-toggle btn btn-light" id="tab-nav-bar"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Settings
                     </li>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <button class="dropdown-item" >Edit</button>
-                        <button class="dropdown-item" >Delete</button>
-
+                        <button class="dropdown-item" href="#">Edit</button>
+                        <button class="dropdown-item" href="#">Delete</button>
                     </div>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container-fluid row">
-        <div class="row" id="tab-list">
-            <div id="tab-template" style="display: none">
-                <div class="card project-card">
+        <div class="row" id="tasks-list">
+            <div id="task-template" style="display: none">
+                <div class="card task-card">
                     <div class="card-body">
-                        <h5 class="tab-title"></h5>
                         <div class="col">
-                            <div class="card tab-task">
-                                <p class="card-header"></p>
+                            <div class="card">
+                                <h5 class="card-header task-title" style="margin-bottom: 5px"></h5>
+                            </div>
+                            <div class="card">
+                                <p class="card-header task-description"></p>
+                            </div>
+                            <div class="row" style="margin-top: 10px">
+                                <a href="#" class="btn btn-primary col" >Start Task</a>
+                                <a href="#" class="btn btn-primary col" style="margin-left: 5px" >Add Comment</a>
+                            </div>
+                            <div class="row" style="margin-top: 5px">
+                                <a href="#" class="btn btn-primary col" >Mark as Finished</a>
                             </div>
                         </div>
-                        <div class="btn btn-primary tab-id-link"></div>
                     </div>
-                    <div class="small-font-tab-footer card-footer text-muted">
+                    <div class="col small-font-tab-footer card-footer text-muted">
+                        <p class="row">Currently assigned to:</p>
+                        <p class="row currently-working-user"></p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="card project-card h-25" style="margin-left: 15px;">
-            <div class="card-body">
-                <div>Title:</div>
-                <form class="tab-task" style="text-align: center">
-                    <input type="text" id="tab-title-submit" style="margin-bottom: 5px;">
-                    <button class="card-header btn" id="create-card">Create new tab</button>
-                </form>
             </div>
         </div>
     </div>

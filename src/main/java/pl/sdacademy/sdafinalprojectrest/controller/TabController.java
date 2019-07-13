@@ -30,7 +30,7 @@ public class TabController {
         return tabService.getTabRepository().findTabByProject(project);
     }
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public Tab getTabById(@PathVariable Long id){
         return tabService.getTabRepository().findById(id)
                 .orElseThrow(() -> new RuntimeException("No such tab exists!"));

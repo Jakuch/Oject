@@ -16,7 +16,7 @@ $("#login-button").click(function (event) {
         url: "http://localhost:8080/login",
         method: "post",
         headers: {
-            "Authorization": "Basic " +btoa(username + ":" + password)
+            "Authorization": "Basic " + btoa(username + ":" + password)
         },
         success: function () {
             window.location.href = "/client/home-page.html";
