@@ -36,13 +36,25 @@ public class TabService {
 
         Tab tab = new Tab(tabDto.getTabName(), foundProject, new ArrayList<>());
 
-        Project updatedProject = foundProject;
-        updatedProject.getTabList().add(tab);
-
-        projectService.setProject(foundProject, updatedProject);
         tabRepository.save(tab);
-
         return tab;
     }
 
+    public Tab updateTab(TabDto tabDto, Long id) {
+        Tab tab = tabRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No such tab exists!"));
+        Project project = projectService.getProjectRepository().findById(tabDto.getProjectId())
+                .orElseThrow(() -> new RuntimeException("No such project exists!"));
+
+        tab.setTabName(tabDto.getTabName());
+        tab.setProject(project);
+        return tabRepository.save(tab);
+    }
+
+    public Tab deleteTab(Long id) {
+        Tab tab = tabRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No such tab exists!"));
+        tabRepository.delete(tab);
+        return tab;
+    }
 }

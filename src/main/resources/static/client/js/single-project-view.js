@@ -7,13 +7,13 @@ $.ajax({
         $("#tab-template").hide();
         $("#disp-project-title-single").text(project.title);
         $("#disp-project-description-single").text(project.description);
-        reloadTabs(project);
+        reloadTabs();
     }
 });
 
-function reloadTabs(project) {
+function reloadTabs() {
     $.ajax({
-            url: "http://localhost:8080/tabs",
+            url: "http://localhost:8080/tabs/project/" + id,
             method: "get",
             success: function (tabs) {
                 const $tabTemplate = $("#tab-template");
@@ -27,6 +27,7 @@ function reloadTabs(project) {
                     $projectTab.find(".tab-title").html(tab.tabName);
 
                     $tabsList.append($projectTab.html());
+
                 }
             }
         }

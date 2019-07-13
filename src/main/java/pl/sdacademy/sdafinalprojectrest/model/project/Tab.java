@@ -1,6 +1,7 @@
 package pl.sdacademy.sdafinalprojectrest.model.project;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -11,15 +12,15 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Data
-@ToString(exclude = {"project"})
 public class Tab {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String tabName;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "project_id", nullable = false)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
     private Project project;
     @OneToMany(mappedBy = "tab",
             cascade = CascadeType.ALL)

@@ -36,7 +36,6 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
     public void editProject(@RequestBody ProjectDto projectDto, @PathVariable Long id) {
         projectService.updateProject(projectDto, id);
     }

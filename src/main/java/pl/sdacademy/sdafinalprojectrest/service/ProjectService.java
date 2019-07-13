@@ -28,23 +28,12 @@ public class ProjectService {
         return userDetailsService;
     }
 
-    public Project getSingleProjectById(Long id){
-        Project userProject = new Project();
-
-        projectRepository.findById(id)
-                .ifPresent(project -> {
-                    boolean contains = project.getContributors()
-                            .contains(userDetailsService.getLoggedUser());
-                    if (contains) {
-                        setProject(userProject, project);
-                    } else {
-                        throw new RuntimeException("No such project!");
-                    }
-                });
-        return userProject;
+    public Project getSingleProjectById(Long id) {
+        return projectRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No such project exists"));
     }
 
-    public Project createNewProject(ProjectDto projectDto){
+    public Project createNewProject(ProjectDto projectDto) {
 
         String loggedUserName = userDetailsService.getLoggedUserName();
         User user = (User) userDetailsService.loadUserByUsername(loggedUserName);
@@ -52,25 +41,22 @@ public class ProjectService {
         Project project = new Project();
         project.setTitle(projectDto.getTitle());
         project.setDescription(projectDto.getDescription());
-        project.setTabList(new ArrayList<>());
         project.setAdmins(new ArrayList<>());
         project.setContributors(new ArrayList<>());
-
+        project.setTabList(new ArrayList<>());
         project.addAdmin(user);
-        project.addContributor(user);
-        projectRepository.save(project);
 
-        return project;
+        return setProject(project, project);
     }
 
-    public Project updateProject(ProjectDto projectDto, Long projectIdToUpdate){
+    public Project updateProject(ProjectDto projectDto, Long projectIdToUpdate) {
         Project projectToUpdate = getSingleProjectById(projectIdToUpdate);
         projectToUpdate.setTitle(projectDto.getTitle());
         projectToUpdate.setDescription(projectDto.getDescription());
         return projectToUpdate;
     }
 
-    public void deleteProject(Long id){
+    public void deleteProject(Long id) {
         projectRepository.findById(id)
                 .ifPresent(project -> projectRepository.delete(project));
     }
