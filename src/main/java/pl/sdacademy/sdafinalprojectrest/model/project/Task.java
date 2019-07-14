@@ -22,7 +22,7 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tab_id")
     private Tab tab;
-//    private Integer storyPoints;
+    private Integer storyPoints;
 //    private LocalDateTime deadline;
     @OneToMany
     private List<User> contributors;

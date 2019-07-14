@@ -64,10 +64,10 @@
             <div class="row">
                 <h2 class="col-10" id="disp-tab-title-single">
                 </h2>
-                <a href="../client/create-task.html" class="text-center text-nowrap btn btn-light col-1">
+                <a href="../client/create-task.html" class="text-reset btn btn-light mt-2 mt-lg-0 col-1">
                     Add task</a>
-                <ul class="dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0 col-1">
-                    <li class=" text-reset nav-link dropdown-toggle btn btn-light" id="tab-nav-bar"
+                <ul class="btn btn-light dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0 col-1">
+                    <li class="text-reset dropdown-toggle" id="tab-nav-bar"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Settings
                     </li>
@@ -85,24 +85,36 @@
                 <div class="card task-card">
                     <div class="card-body">
                         <div class="col">
-                            <div class="card">
-                                <h5 class="card-header task-title" style="margin-bottom: 5px"></h5>
+                            <div>Title</div>
+                            <div class="card card-header" style="margin-bottom: 5px">
+                                <h5 class="task-title"></h5>
                             </div>
-                            <div class="card">
-                                <p class="card-header task-description"></p>
+                            <div>Description</div>
+                            <div class="card text-wrap">
+                                <p class="task-description text-wrap"></p>
                             </div>
                             <div class="row" style="margin-top: 10px">
-                                <a href="#" class="btn btn-primary col" >Start Task</a>
-                                <a href="#" class="btn btn-primary col" style="margin-left: 5px" >Add Comment</a>
+                                <a href="#" class="btn btn-primary col">Start Task</a>
+                                <a href="#" class="btn btn-primary col" style="margin-left: 5px">Add Comment</a>
                             </div>
                             <div class="row" style="margin-top: 5px">
-                                <a href="#" class="btn btn-primary col" >Mark as Finished</a>
+                                <a href="#" class="btn btn-primary col">Mark as Finished</a>
                             </div>
                         </div>
                     </div>
                     <div class="col small-font-tab-footer card-footer text-muted">
-                        <p class="row">Currently assigned to:</p>
-                        <p class="row currently-working-user"></p>
+                        <div class="row">
+                            <div>Due date: "</div>
+                            <div class="task-due-date"></div>
+                        </div>
+                        <div class="row">
+                            <div>Story points: </div>
+                            <div class="task-story-points"></div>
+                        </div>
+                        <div class="row">Currently assigned to: </div>
+                        <div class="current-users-list" id="task-contributor-tmp">
+                            <div class="row currently-working-user"></div>
+                        </div>
                     </div>
                 </div>
             </div>

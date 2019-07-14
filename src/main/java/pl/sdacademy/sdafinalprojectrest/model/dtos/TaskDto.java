@@ -9,4 +9,5 @@ public class TaskDto {
     private Long tabId;
     private String title;
     private String description;
+    private Integer storyPoints;
 }

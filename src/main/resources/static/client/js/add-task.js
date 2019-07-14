@@ -2,13 +2,16 @@
 $("#submit-new-task").click(function () {
     event.preventDefault();
 
+    const currentTabId = localStorage.getItem("tabId")
     const taskTitle = $("#task-title-submit").val();
     const taskDescription =  $("#task-description-submit").val();
+    const storyPoints = $("#task-story-points-submit").val();
 
     const task = {
-        //TODO sending the id of tab from tab.html to create-task.html
+        tabId: currentTabId,
         title: taskTitle,
-        description: taskDescription
+        description: taskDescription,
+        storyPoints: storyPoints
     }
 
     $.ajax({
@@ -17,7 +20,7 @@ $("#submit-new-task").click(function () {
         method: "post",
         contentType: "application/json",
         success: function () {
-            window.location.href = "http://localhost:8080/client/tab.html";
+            window.location.href = "http://localhost:8080/client/tab.html#" + currentTabId;
         }
 
     })

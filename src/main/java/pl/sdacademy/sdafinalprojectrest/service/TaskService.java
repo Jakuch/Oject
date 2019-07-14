@@ -35,9 +35,10 @@ public class TaskService {
         task.setTab(foundTab);
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
+        task.setStoryPoints(taskDto.getStoryPoints());
         task.setContributors(new ArrayList<>());
 
-        return task;
+        return taskRepository.save(task);
     }
 
 }
