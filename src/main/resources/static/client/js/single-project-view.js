@@ -27,8 +27,18 @@ function reloadTabs() {
                     $projectTab.find(".tab-title").html(tab.tabName);
                     $projectTab.find(".tab-id-link").html('<a class="btn btn-primary" href="tab.html#' + tab.id + '">' + "Go to card" +'</a>');
 
-                    $tabsList.append($projectTab.html());
+                    const tasks = tab.task;
 
+                    for(let i = 0; i < tasks.length; i++){
+
+                        const task = tasks[i];
+                        const $tabTaskTmp = $("#tab-task-tmp").clone();
+
+                        $tabTaskTmp.find(".tab-task").html(task.title);
+                        $tabTaskTmp.removeAttr("#tab-task-tmp");
+                        $projectTab.find(".tab-view-tasks-list").append($tabTaskTmp.html());
+                    }
+                    $tabsList.append($projectTab.html());
                 }
             }
         }

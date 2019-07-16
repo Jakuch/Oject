@@ -31,11 +31,11 @@ function reloadTasks(){
                 $tabTask.find(".task-due-date") //TODO
                 $tabTask.find(".task-story-points").html(task.storyPoints);
 
-                const taskContributors = task.contributors.length;
+                const taskContributors = task.contributors;
 
-                for(let i = 0; i < taskContributors; i++){
+                for(let i = 0; i < taskContributors.length; i++){
 
-                    const contributor = task.contributors[i];
+                    const contributor = taskContributors[i];
                     const $taskContributor = $taskContributorTmp.clone();
 
                     $taskContributor.find(".currently-working-user").html(contributor.username)
