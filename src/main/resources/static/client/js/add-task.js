@@ -1,4 +1,10 @@
-
+$.ajax({
+    url: "http://localhost:8080/tabs/" + localStorage.getItem("tabId"),
+    method: "get",
+    success: function (tab) {
+        $("#tab-name").text(tab.tabName);
+    }
+})
 $("#submit-new-task").click(function () {
     event.preventDefault();
 
@@ -6,13 +12,15 @@ $("#submit-new-task").click(function () {
     const taskTitle = $("#task-title-submit").val();
     const taskDescription =  $("#task-description-submit").val();
     const storyPoints = $("#task-story-points-submit").val();
+    const dueDate = $("#task-deadline-submit").val();
 
     const task = {
         tabId: currentTabId,
         title: taskTitle,
         description: taskDescription,
-        storyPoints: storyPoints
-    }
+        storyPoints: storyPoints,
+        dueDate: dueDate
+    };
 
     $.ajax({
         url: "http://localhost:8080/tasks",
@@ -26,14 +34,3 @@ $("#submit-new-task").click(function () {
     })
 
 });
-
-
-// $.ajax({
-//     url: "http://localhost:8080/client/create-task.html",
-//     method: "get",
-//     success: function () {
-//         $.ajax({
-//             url: "http://localhost:8080/projects"
-//         })
-//     }
-// })

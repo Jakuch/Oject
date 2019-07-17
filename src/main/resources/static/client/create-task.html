@@ -60,7 +60,12 @@
 <div class="container">
     <div class="row card-header bg-primary text-white" style="margin-bottom: 10px">
         <div class="col-4"></div>
-        <h1 class="text-center col-4">Create new Task</h1>
+        <h1 class="text-center col-4" id="tab-name"></h1>
+        <div class="col-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <h2 class="text-center col-4">Create new Task</h2>
         <div class="col-4"></div>
     </div>
     <form class="row">
@@ -76,10 +81,16 @@
                         Description
                         <textarea rows="3" id="task-description-submit"></textarea>
                     </label>
-                    <label class="col card card-header bg-secondary text-white" style="margin-top: 5px">
+                    <div class="row" style="margin-top: 5px">
+                    <label class="col card card-header bg-secondary text-white">
                         Story points
                         <input type="number" id="task-story-points-submit">
                     </label>
+                        <label class="col card card-header bg-secondary text-white" for="task-deadline-submit">
+                            Due date
+                            <input type="date" id="task-deadline-submit">
+                        </label>
+                    </div>
                     <div class="row" style="margin-top: 10px">
                         <button type="submit" class="btn btn-primary col" id="submit-new-task">Create task</button>
                     </div>

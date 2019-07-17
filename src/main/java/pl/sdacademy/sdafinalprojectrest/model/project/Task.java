@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class Task {
     @JoinColumn(name = "tab_id")
     private Tab tab;
     private Integer storyPoints;
-//    private LocalDateTime deadline;
+    private LocalDateTime dueDate;
     @OneToMany
     private List<User> contributors;
 

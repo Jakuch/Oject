@@ -61,7 +61,7 @@
 
 <div class="container">
     <div class="card" style="margin-bottom: 10px">
-        <div class="card-header col">
+        <div class="card-header col-12">
             <div class="row">
                 <div class="col-9" style="margin-left: 10px;">
                     <h2 class="row" id="disp-project-title-single">
@@ -69,17 +69,23 @@
                     <p class="row" id="disp-project-description-single">
                     </p>
                 </div>
-                <ul class="dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0 col-3">
-                    <li class="nav-link dropdown-toggle" id="project-nav-bar"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Settings
-                    </li>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <button class="dropdown-item" >Edit</button>
-                        <button class="dropdown-item" >Delete</button>
+                <div class="btn-toolbar col-2" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                       <a href="../client/projects.html" class="btn btn-secondary mt-2 mt-lg-0">Back</a>
+                        <!--TODO improve the visuals of "back" btn-->
+                        <ul class="btn btn-secondary navbar-right navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-link dropdown-toggle" id="project-nav-bar"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Settings
+                            </li>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <button class="dropdown-item">Edit</button>
+                                <button class="dropdown-item">Delete</button>
 
+                            </div>
+                        </ul>
                     </div>
-                </ul>
+                </div>
             </div>
         </div>
     </div>

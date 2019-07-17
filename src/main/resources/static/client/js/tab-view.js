@@ -6,7 +6,7 @@ $.ajax({
     success: function (tab) {
         $("#task-template").hide();
         $("#task-contributor-tmp").hide();
-        $("#disp-tab-title-single").text(tab.title);
+        $("#disp-tab-title-single").text(tab.tabName);
         localStorage.setItem("tabId", tabId);
         reloadTasks()
     }
@@ -28,7 +28,7 @@ function reloadTasks(){
 
                 $tabTask.find(".task-title").html(task.title);
                 $tabTask.find(".task-description").html(task.description);
-                $tabTask.find(".task-due-date") //TODO
+                $tabTask.find(".task-due-date").html(task.dueDate);
                 $tabTask.find(".task-story-points").html(task.storyPoints);
 
                 const taskContributors = task.contributors;
@@ -46,4 +46,8 @@ function reloadTasks(){
             }
         }
     })
+}
+
+function RemoveTab(id) {
+
 }

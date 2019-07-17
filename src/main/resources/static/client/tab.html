@@ -62,20 +62,26 @@
     <div class="card" style="margin-bottom: 10px">
         <div class="card-header">
             <div class="row">
-                <h2 class="col-10" id="disp-tab-title-single">
+                <h2 class="col-9" id="disp-tab-title-single">
                 </h2>
-                <a href="../client/create-task.html" class="text-reset btn btn-light mt-2 mt-lg-0 col-1">
-                    Add task</a>
-                <ul class="btn btn-light dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0 col-1">
-                    <li class="text-reset dropdown-toggle" id="tab-nav-bar"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Settings
-                    </li>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <button class="dropdown-item" href="#">Edit</button>
-                        <button class="dropdown-item" href="#">Delete</button>
+                <div class="btn-toolbar col-3" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a href="../client/project.html" class="text-white text-nowrap btn btn-secondary mt-2 mt-lg-0">Back</a>
+                        <a href="../client/create-task.html" class="text-white text-nowrap btn btn-secondary mt-2 mt-lg-0">
+                            Add task</a>
+                        <ul class="btn btn-secondary dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0">
+                            <li class="text-reset dropdown-toggle" id="tab-nav-bar"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Settings
+                            </li>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <button class="dropdown-item" href="#">Edit</button>
+                                <button class="dropdown-item" id="remove-tab-btn">Delete</button>
+                            </div>
+                        </ul>
                     </div>
-                </ul>
+                </div>
+
             </div>
         </div>
     </div>
