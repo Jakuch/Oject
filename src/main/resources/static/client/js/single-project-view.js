@@ -1,5 +1,6 @@
 const projectId = window.location.hash.substr(1);
 
+
 $.ajax({
     url: "http://localhost:8080/projects/" + projectId,
     method: "get",
@@ -7,6 +8,7 @@ $.ajax({
         $("#tab-template").hide();
         $("#disp-project-title-single").text(project.title);
         $("#disp-project-description-single").text(project.description);
+        localStorage.setItem("projectId", projectId);
         reloadTabs();
     }
 });
@@ -44,3 +46,23 @@ function reloadTabs() {
         }
     )
 }
+
+$("#delete-project-btn").click(function () {
+    $.ajax({
+        url: "http://localhost:8080/projects/" + projectId,
+        method: "delete",
+        success: function(){
+            window.location.href = "/client/projects.html"
+        }
+    })
+});
+
+$("#edit-project-btn").click(function () {
+    $.ajax({
+        url: "http://localhost:8080/projects/" + projectId,
+        method: "delete",
+        success: function(){
+            window.location.href = "/client/edit-project.html#" + projectId
+        }
+    })
+});

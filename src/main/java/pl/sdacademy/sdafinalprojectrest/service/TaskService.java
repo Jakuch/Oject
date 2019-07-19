@@ -36,6 +36,7 @@ public class TaskService {
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
         task.setStoryPoints(taskDto.getStoryPoints());
+        task.setDueDate(taskDto.getDueDate());
         task.setContributors(new ArrayList<>());
 
         return taskRepository.save(task);

@@ -21,6 +21,7 @@
     <script src="js/login-logout.js" defer></script>
     <script src="js/tab-view.js" defer></script>
     <script src="js/add-task.js" defer></script>
+    <script src="js/edit-project-tab.js" defer></script>
 </head>
 <body>
 <div class="container-fluid" style="margin-bottom: 10px">
@@ -64,33 +65,38 @@
             <div class="row">
                 <h2 class="col-9" id="disp-tab-title-single">
                 </h2>
-                <div class="btn-toolbar col-3" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a href="../client/project.html" class="text-white text-nowrap btn btn-secondary mt-2 mt-lg-0">Back</a>
-                        <a href="../client/create-task.html" class="text-white text-nowrap btn btn-secondary mt-2 mt-lg-0">
-                            Add task</a>
-                        <ul class="btn btn-secondary dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0">
-                            <li class="text-reset dropdown-toggle" id="tab-nav-bar"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Settings
-                            </li>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <button class="dropdown-item" href="#">Edit</button>
-                                <button class="dropdown-item" id="remove-tab-btn">Delete</button>
-                            </div>
-                        </ul>
+                <form>
+                    <div class="btn-toolbar col-3" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button type="submit" id="back-tab-btn"
+                                    class="text-white text-nowrap btn btn-secondary mt-2 mt-lg-0">
+                                Back
+                            </button>
+                            <a href="../client/create-task.html"
+                               class="text-white text-nowrap btn btn-secondary mt-2 mt-lg-0">
+                                Add task</a>
+                            <ul class="btn btn-secondary dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0">
+                                <li class="text-reset dropdown-toggle" id="tab-nav-bar"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Settings
+                                </li>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <button class="dropdown-item" id="edit-tab-btn">Edit</button>
+                                    <button class="dropdown-item" id="delete-tab-btn">Delete</button>
+                                </div>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
+                </form>
             </div>
         </div>
     </div>
     <div class="container-fluid row">
         <div class="row" id="tasks-list">
-            <div id="task-template" style="display: none">
-                <div class="card task-card">
-                    <div class="card-body">
-                        <div class="col">
+            <div class="col">
+                <div id="task-template" style="display: none">
+                    <div class="card task-card">
+                        <div class="card-body">
                             <div>Task</div>
                             <div class="card card-header" style="margin-bottom: 5px">
                                 <h5 class="task-title"></h5>
@@ -99,28 +105,44 @@
                             <div class="card text-wrap">
                                 <p class="task-description text-wrap"></p>
                             </div>
-                            <div class="row" style="margin-top: 10px">
-                                <a href="#" class="btn btn-primary col">Start Task</a>
-                                <a href="#" class="btn btn-primary col" style="margin-left: 5px">Add Comment</a>
+                            <div style="padding: 0px 15px 0px 15px">
+                                <div class="row" style="margin-top: 10px">
+                                    <button title="Not implemented" class="btn btn-primary col text-wrap"
+                                            style="font-size: small">Start
+                                        Task
+                                    </button>
+                                    <button title="Not implemented" class="btn btn-primary col text-wrap"
+                                            style="margin-left: 5px; font-size: small;">Add Comment
+                                    </button>
+                                </div>
+                                <div class="row" style="margin-top: 5px">
+                                    <button title="Not implemented" class="btn btn-primary col text-wrap"
+                                            style="font-size: small">Remove
+                                        task
+                                    </button>
+                                    <button title="Not implemented" class="btn btn-primary col text-wrap"
+                                            style="margin-left: 5px; font-size: small; ">Mark as Finished
+                                    </button>
+                                </div>
                             </div>
-                            <div class="row" style="margin-top: 5px">
-                                <a href="#" class="btn btn-primary col">Mark as Finished</a>
+                        </div>
+                        <div class="col small-font-tab-footer card-footer text-muted">
+                            <div class="row">
+                                <div>Due date:</div>
+                                <div class="task-due-date"></div>
+                            </div>
+                            <div class="row">
+                                <div>Story points:</div>
+                                <div class="task-story-points"></div>
+                            </div>
+                            <div class="row">Currently assigned to:</div>
+                            <div class="current-users-list" id="task-contributor-tmp">
+                                <div class="row currently-working-user"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col small-font-tab-footer card-footer text-muted">
-                        <div class="row">
-                            <div>Due date: "</div>
-                            <div class="task-due-date"></div>
-                        </div>
-                        <div class="row">
-                            <div>Story points: </div>
-                            <div class="task-story-points"></div>
-                        </div>
-                        <div class="row">Currently assigned to: </div>
-                        <div class="current-users-list" id="task-contributor-tmp">
-                            <div class="row currently-working-user"></div>
-                        </div>
+                    <div class="row card" style="margin-top: 15px">
+                        <div class="tab-comments-list">comments here</div>
                     </div>
                 </div>
             </div>

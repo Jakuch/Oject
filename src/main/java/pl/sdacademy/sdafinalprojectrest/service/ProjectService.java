@@ -58,7 +58,11 @@ public class ProjectService {
 
     public void deleteProject(Long id) {
         projectRepository.findById(id)
-                .ifPresent(project -> projectRepository.delete(project));
+                .ifPresent(project -> {
+                    project.setContributors(new ArrayList<>());
+                    project.setAdmins(new ArrayList<>());
+                    projectRepository.delete(project);
+                });
     }
 
     public Project setProject(Project projectToSet, Project projectToGet) {

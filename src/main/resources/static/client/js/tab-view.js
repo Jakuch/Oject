@@ -1,5 +1,21 @@
 const tabId = window.location.hash.substr(1);
 
+$("#back-tab-btn").click(function () {
+
+    const projectId = localStorage.getItem("projectId");
+
+    $.ajax({
+        url: "http://localhost:8080/projects/" + projectId,
+        method: "get",
+        success: function (project) {
+            $("#tab-template").hide();
+            $("#disp-project-title-single").text(project.title);
+            $("#disp-project-description-single").text(project.description);
+            window.location.href = "/client/project.html#" + projectId;
+        }
+    });
+});
+
 $.ajax({
     url: "http://localhost:8080/tabs/" + tabId,
     method: "get",
@@ -48,6 +64,25 @@ function reloadTasks(){
     })
 }
 
-function RemoveTab(id) {
+$("#delete-tab-btn").click(function () {
+    $.ajax({
+        url: "http://localhost:8080/tabs/" + tabId,
+        method: "delete",
+        success: function(){
+            window.location.href = "/client/project.html#" + projectId;
+        }
+    })
+});
 
-}
+$("#edit-tab-btn").click(function () {
+    $.ajax({
+        url: "http://localhost:8080/tabs/" + tabId,
+        method: "get",
+        success: function () {
+            $("#disp-tab-title-single").html(
+                '<form><input type="text" value="' + tab.title + '"><button type="submit" name="Update" id="update-card"></button> </form>')
+        //    TODO
+
+        }
+    })
+})

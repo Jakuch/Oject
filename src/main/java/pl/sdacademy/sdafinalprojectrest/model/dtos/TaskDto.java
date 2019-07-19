@@ -3,7 +3,7 @@ package pl.sdacademy.sdafinalprojectrest.model.dtos;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -12,5 +12,5 @@ public class TaskDto {
     private String title;
     private String description;
     private Integer storyPoints;
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
 }

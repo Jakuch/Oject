@@ -54,6 +54,7 @@ public class TabService {
     public Tab deleteTab(Long id) {
         Tab tab = tabRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("No such tab exists!"));
+        tab.setProject(null);
         tabRepository.delete(tab);
         return tab;
     }
