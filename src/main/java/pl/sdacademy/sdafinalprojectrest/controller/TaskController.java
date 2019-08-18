@@ -43,14 +43,9 @@ public class TaskController {
         return taskService.createTask(taskDto);
     }
 
-    @PutMapping
-    public Task updateTask(@RequestBody TaskDto taskDto){
-        return null;
-    }
-
-    @PutMapping("/updateStatus/{id}")
-    public Task setTaskStatusToFinished(@PathVariable Long id){
-        return taskService.updateTaskStatusById(id);
+    @PutMapping("/{id}")
+    public Task updateTask(@RequestBody TaskDto taskDto, @PathVariable Long id){
+        return taskService.updateTaskFromDto(taskDto, id);
     }
 
     @DeleteMapping("/{id}")

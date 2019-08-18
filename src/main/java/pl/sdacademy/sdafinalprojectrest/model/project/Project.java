@@ -6,6 +6,7 @@ import pl.sdacademy.sdafinalprojectrest.model.user.User;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -52,4 +53,9 @@ public class Project {
         contributors.add(user);
     }
 
+    public List<User> getContributorsById(List<Long> ids){
+        return contributors.stream()
+                .filter(user -> user.getId().equals(id))
+                .collect(Collectors.toList());
+    }
 }

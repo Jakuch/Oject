@@ -61,12 +61,13 @@ $("#edit-project-btn").on("click",function () {
     window.location.href = "/client/edit-project.html#" + projectId;
 });
 
-$("#add-contributor-to-project-btn").on("submit", function () {
+$("#add-contributor-to-project-btn").on("click", function () {
+    event.preventDefault();
     const username = $("#username-to-add").val();
 
     $.ajax({
         url: "http://localhost:8080/projects/contributors/" + projectId,
-        method: "post",
+        method: "put",
         data: JSON.stringify(username),
         contentType: "application/json",
         success: function () {

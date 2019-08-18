@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>New task</title>
+    <title>Edit task</title>
     <link rel="stylesheet" href="../client/css/style.css">
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -66,7 +66,6 @@
                 <div class="btn-group mr-2" role="group" aria-label="First group">
                     <button type="submit" id="back-task-btn" class="text-white btn btn-dark">Back</button>
                     <button type="submit" id="remove-task-btn" class="text-white btn btn-dark">Remove</button>
-                    <button type="submit" id="status-task-btn" class="text-white btn btn-dark">Set task status</button>
                     <button type="submit" id="save-task-btn" class="text-white btn btn-dark">Save Task</button>
                 </div>
             </div>
@@ -79,7 +78,7 @@
         <div class="row">
             <div class="col-4">
                 <div class="card task-card">
-                    <div class="card-body" id="task-status">
+                    <div class="card-body">
                         <label class="card card-header bg-dark text-white" style="margin-bottom: 5px">
                             Title
                             <input type="text" id="task-title-submit" style="margin-bottom: 5px">
@@ -103,10 +102,11 @@
             </div>
             <div class="col-4">
                 <div class="card task-card">
-                    <ul class="list-group" id="contributors-list" style="padding: 10px 10px 10px 10px;">
-                        <li class="list-group-item" id="user-tmp">
-                        </li>
-                    </ul>
+                    <div class="card list-group" id="contributors-list" style="padding: 10px 10px 10px 10px;">
+                        <div id="user-tmp">
+
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-4">

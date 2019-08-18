@@ -15,5 +15,5 @@ public class TaskDto {
     private String description;
     private Integer storyPoints;
     private LocalDate dueDate;
-    private List<User> contributors;
+    private List<Long> contributors;
 }

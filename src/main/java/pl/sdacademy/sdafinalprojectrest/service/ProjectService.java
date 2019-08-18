@@ -9,6 +9,7 @@ import pl.sdacademy.sdafinalprojectrest.model.user.User;
 import pl.sdacademy.sdafinalprojectrest.repository.ProjectRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @NoArgsConstructor
@@ -76,10 +77,12 @@ public class ProjectService {
     }
 
     public void addUserToProject(String username, Long id) {
-        Project project = projectRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No such project exists!"));
-        User user = (User) userDetailsService.loadUserByUsername(username);
+        String un = username.replace("\"", "");
+        Project project = getSingleProjectById(id);
+        User user = (User) userDetailsService.loadUserByUsername(un);
         project.getContributors().add(user);
         user.getContributions().add(project);
+
+        projectRepository.save(project);
     }
 }

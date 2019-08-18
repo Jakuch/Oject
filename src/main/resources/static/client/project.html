@@ -60,50 +60,46 @@
 </div>
 
 <div class="container">
-    <div class="card" style="margin-bottom: 10px">
-        <div class="card-header col-12">
-            <div class="row">
-                <div class="col-9" style="margin-left: 10px;">
-                    <h2 id="disp-project-title-single"></h2>
-                </div>
-                <form>
-                    <div class="btn-toolbar col-2" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <div class="btn btn-secondary mt-2 mt-lg-0">
-                                <a href="../client/projects.html" id="back-project-btn"
-                                   class="btn btn-secodnary text-white">
-                                    Back</a>
-                            </div>
-                            <ul class="btn btn-secondary navbar-right navbar-nav mt-2 mt-lg-0">
-                                <li class="nav-link dropdown-toggle" id="add-contributor"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Add contributor
-                                </li>
-                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <form>
-                                        <label style="margin: 0px 5px 0px 5px">Username:
-                                            <input type="text" id="username-to-add">
-                                        </label>
-                                        <button style="margin: 5px 5px 0px 5px" class="dropdown btn btn-secondary" id="add-contributor-to-project-btn">Add</button>
-                                    </form>
-                                </li>
-                            </ul>
-                            <ul class="btn btn-secondary navbar-right navbar-nav mt-2 mt-lg-0">
-                                <li class="nav-link dropdown-toggle" id="project-nav-bar"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Settings
-                                </li>
-                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <button class="dropdown-item" id="edit-project-btn">Edit</button>
-                                    <button class="dropdown-item" id="delete-project-btn">Delete</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="row" id="disp-project-description-single"></div>
+    <div class="card card-header row" style="margin-bottom: 10px">
+        <div class="col">
+            <h2 id="disp-project-title-single"></h2>
+            <div id="disp-project-description-single"></div>
         </div>
+        <form class="col text-right">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <div class="btn btn-secondary mt-2 mt-lg-0">
+                <a href="../client/projects.html" id="back-project-btn"
+                   class="btn btn-secodnary text-white">
+                    Back</a>
+                </div>
+                <ul class="btn btn-secondary navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-link dropdown-toggle" id="add-contributor"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Add contributor
+                    </li>
+                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <form>
+                            <label style="margin: 0px 5px 0px 5px">Username:
+                                <input type="text" id="username-to-add">
+                            </label>
+                            <button style="margin: 5px 5px 0px 5px" class="dropdown btn btn-secondary"
+                                    id="add-contributor-to-project-btn">Add
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+                <ul class="btn btn-secondary navbar-right navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-link dropdown-toggle" id="project-nav-bar"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Settings
+                    </li>
+                    <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <button class="dropdown-item" id="edit-project-btn">Edit</button>
+                        <button class="dropdown-item" id="delete-project-btn">Delete</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
     </div>
     <div class="container-fluid row">
         <div class="row" id="tab-list">

@@ -35,7 +35,7 @@ public class ProjectController {
         return projectService.createNewProject(projectDto);
     }
 
-    @PostMapping("/contributors/{id}")
+    @PutMapping("/contributors/{id}")
     public void addContributorToProject(@RequestBody String username, @PathVariable Long id){
         projectService.addUserToProject(username, id);
     }

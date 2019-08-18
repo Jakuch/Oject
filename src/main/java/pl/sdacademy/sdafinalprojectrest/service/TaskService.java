@@ -4,12 +4,16 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sdacademy.sdafinalprojectrest.model.dtos.TaskDto;
+import pl.sdacademy.sdafinalprojectrest.model.project.Project;
 import pl.sdacademy.sdafinalprojectrest.model.project.Tab;
 import pl.sdacademy.sdafinalprojectrest.model.project.Task;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 import pl.sdacademy.sdafinalprojectrest.repository.TaskRepository;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @NoArgsConstructor
@@ -28,36 +32,36 @@ public class TaskService {
         return taskRepository;
     }
 
-    public Task createTask(TaskDto taskDto){
-        Tab foundTab = tabService.getTabRepository().findById(taskDto.getTabId())
-                .orElseThrow(() -> new RuntimeException("No such tab exists!"));
-
+    public Task createTask(TaskDto taskDto) {
         Task task = new Task();
+        return setTask(task, taskDto);
+    }
+
+    public Task updateTaskFromDto(TaskDto taskDto, Long taskId) {
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new RuntimeException("No such task exists!"));
+        return setTask(task, taskDto);
+    }
+
+    private Task setTask(Task task, TaskDto taskDto) {
+        Tab foundTab = tabService.getTabRepository()
+                .findById(taskDto.getTabId())
+                .orElseThrow(() -> new RuntimeException("No such tab exists!"));
+        Project project = tabService.getProjectService().getProjectRepository()
+                .findById(foundTab.getProject().getId())
+                .orElseThrow(() -> new RuntimeException("No such project exists!"));
+
+        List<Long> projectContributorIds = project.getContributors().stream()
+                .map(User::getId)
+                .filter(id -> taskDto.getContributors().contains(id))
+                .collect(Collectors.toList());
+
         task.setTab(foundTab);
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
         task.setStoryPoints(taskDto.getStoryPoints());
         task.setDueDate(taskDto.getDueDate());
-        task.setContributors(new ArrayList<>());
-
+        task.setContributors(project.getContributorsById(projectContributorIds));
         return taskRepository.save(task);
-    }
-
-    public Task assignTaskToUser(Long taskId, User user) {
-        Task task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new RuntimeException("No such task exists!"));
-        user.getTasks().add(task);
-        task.getContributors().add(user);
-        return task;
-    }
-
-    public Task updateTaskStatusById(Long id) {
-        Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("No such task exists!"));
-        if(task.getIsFinished()){
-            task.setIsFinished(false);
-        } else {
-            task.setIsFinished(true);
-        }
-        return task;
     }
 }
