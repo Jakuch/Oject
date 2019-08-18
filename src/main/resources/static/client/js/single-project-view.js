@@ -52,17 +52,25 @@ $("#delete-project-btn").click(function () {
         url: "http://localhost:8080/projects/" + projectId,
         method: "delete",
         success: function(){
-            window.location.href = "/client/projects.html"
+             window.location = "/client/projects.html";
         }
     })
 });
 
-$("#edit-project-btn").click(function () {
+$("#edit-project-btn").on("click",function () {
+    window.location.href = "/client/edit-project.html#" + projectId;
+});
+
+$("#add-contributor-to-project-btn").on("submit", function () {
+    const username = $("#username-to-add").val();
+
     $.ajax({
-        url: "http://localhost:8080/projects/" + projectId,
-        method: "delete",
-        success: function(){
-            window.location.href = "/client/edit-project.html#" + projectId
+        url: "http://localhost:8080/projects/contributors/" + projectId,
+        method: "post",
+        data: JSON.stringify(username),
+        contentType: "application/json",
+        success: function () {
+            location.reload();
         }
     })
 });

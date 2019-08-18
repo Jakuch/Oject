@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New task</title>
+    <link rel="stylesheet" href="../client/css/style.css">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous" defer></script>
+    <script src="js/jquery-3.3.1.min.js" defer></script>
+    <script src="js/login-logout.js" defer></script>
+    <script src="js/edit-task.js" defer></script>
+</head>
+<body>
+<div class="container-fluid" style="margin-bottom: 10px">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-brand">Oject</div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home-page.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../client/projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Teams</a>
+                </li>
+            </ul>
+            <ul class="dropdown-list-sticky navbar-right navbar-nav mt-2 mt-lg-0">
+                <li class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Account
+                </li>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <button class="dropdown-item" id="submit-logout">Logout</button>
+                </div>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <form>
+        <div class="row card-header bg-primary text-white" style="margin-bottom: 10px">
+            <div class="col-4"></div>
+            <h1 class="text-center col-4">Task settings</h1>
+            <div class="col-4 text-right">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="submit" id="back-task-btn" class="text-white btn btn-dark">Back</button>
+                    <button type="submit" id="remove-task-btn" class="text-white btn btn-dark">Remove</button>
+                    <button type="submit" id="status-task-btn" class="text-white btn btn-dark">Set task status</button>
+                    <button type="submit" id="save-task-btn" class="text-white btn btn-dark">Save Task</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="text-center col-4">Task information</h2>
+            <h2 class="text-center col-4">Project contributors</h2>
+            <h2 class="text-center col-4">Comments</h2>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card task-card">
+                    <div class="card-body" id="task-status">
+                        <label class="card card-header bg-dark text-white" style="margin-bottom: 5px">
+                            Title
+                            <input type="text" id="task-title-submit" style="margin-bottom: 5px">
+                        </label>
+                        <label class="card card-header bg-secondary text-white">
+                            Description
+                            <textarea rows="3" id="task-description-submit"></textarea>
+                        </label>
+                        <div class="row" style="margin-top: 5px">
+                            <label class="col card card-header bg-secondary text-white">
+                                Story points
+                                <input type="number" id="task-story-points-submit">
+                            </label>
+                            <label class="col card card-header bg-secondary text-white" for="task-deadline-submit">
+                                Due date
+                                <input type="date" id="task-deadline-submit">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card task-card">
+                    <ul class="list-group" id="contributors-list" style="padding: 10px 10px 10px 10px;">
+                        <li class="list-group-item" id="user-tmp">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card task-card">
+                    <div class="card text-wrap" style="padding: 15px 15px 15px 15px">
+                        <div class="tab-comments-list" style="display: none">
+                            <div class="card text-wrap" id="comment-tmp" style="margin-bottom: 5px">
+                                <div style="padding: 5px 5px 5px 5px">
+                                    <p class="comment-text"></p>
+                                </div>
+                                <div class="small-font-tab-footer card-footer text-wrap">
+                                    <div class="row">Comment by:&nbsp;
+                                        <div class="comment-user"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

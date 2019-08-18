@@ -42,3 +42,8 @@ $("#submit-logout").click(function () {
     })
 });
 
+$().ajaxError(function (event, jqXHR, ajaxSettings, thrownError) {
+    if (jqXHR.status == 401){
+        window.location.href = "/client/login.html"
+    }
+})

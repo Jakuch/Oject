@@ -19,7 +19,7 @@
             crossorigin="anonymous" defer></script>
     <script src="js/jquery-3.3.1.min.js" defer></script>
     <script src="js/single-project-view.js" defer></script>
-    <script src="js/add-project-tab.js" defer></script>
+    <script src="js/create-project-tab.js" defer></script>
     <script src="js/login-logout.js" defer></script>
     <script src="js/tab-view.js" defer></script>
 </head>
@@ -75,14 +75,28 @@
                                     Back</a>
                             </div>
                             <ul class="btn btn-secondary navbar-right navbar-nav mt-2 mt-lg-0">
+                                <li class="nav-link dropdown-toggle" id="add-contributor"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Add contributor
+                                </li>
+                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <form>
+                                        <label style="margin: 0px 5px 0px 5px">Username:
+                                            <input type="text" id="username-to-add">
+                                        </label>
+                                        <button style="margin: 5px 5px 0px 5px" class="dropdown btn btn-secondary" id="add-contributor-to-project-btn">Add</button>
+                                    </form>
+                                </li>
+                            </ul>
+                            <ul class="btn btn-secondary navbar-right navbar-nav mt-2 mt-lg-0">
                                 <li class="nav-link dropdown-toggle" id="project-nav-bar"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Settings
                                 </li>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <button class="dropdown-item" id="edit-project-btn">Edit</button>
                                     <button class="dropdown-item" id="delete-project-btn">Delete</button>
-                                </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -114,7 +128,7 @@
                 <div>Title:</div>
                 <form class="tab-task" style="text-align: center">
                     <input type="text" id="tab-title-submit" style="margin-bottom: 5px;">
-                    <button class="card-header btn" id="create-card">Create new tab</button>
+                    <button class="card-header btn" id="create-card">Create new card</button>
                 </form>
             </div>
         </div>

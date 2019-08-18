@@ -13,13 +13,15 @@ $("#submit-new-task").click(function () {
     const taskDescription =  $("#task-description-submit").val();
     const storyPoints = $("#task-story-points-submit").val();
     const dueDate = $("#task-deadline-submit").val();
+    const contrib = [];
 
     const task = {
         tabId: currentTabId,
         title: taskTitle,
         description: taskDescription,
         storyPoints: storyPoints,
-        dueDate: dueDate
+        dueDate: dueDate,
+        contributors: contrib
     };
 
     $.ajax({

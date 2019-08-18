@@ -25,12 +25,15 @@ public class Task {
     private Tab tab;
     private Integer storyPoints;
     private LocalDate dueDate;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
     private List<User> contributors;
+    private Boolean isFinished;
 
     public Task(String title, String description) {
         this.title = title;
         this.description = description;
+        this.isFinished = Boolean.FALSE;
     }
 
 

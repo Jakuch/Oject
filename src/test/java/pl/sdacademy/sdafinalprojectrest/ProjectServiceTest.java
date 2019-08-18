@@ -56,6 +56,7 @@ public class ProjectServiceTest {
                 "test@test.com",
                 User.Role.USER,
                 new ArrayList<>(),
+                new ArrayList<>(),
                 new ArrayList<>());
 
         Project testProject = new Project("TestProject",

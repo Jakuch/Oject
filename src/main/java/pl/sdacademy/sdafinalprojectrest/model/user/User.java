@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.sdacademy.sdafinalprojectrest.model.project.Project;
+import pl.sdacademy.sdafinalprojectrest.model.project.Task;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -37,6 +38,9 @@ public class User implements UserDetails {
     @JsonIgnore
     @ManyToMany(mappedBy = "contributors")
     private List<Project> contributions;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "contributors")
+    private List<Task> tasks;
 
     public User(String username, String password, String email, Role role) {
         this.username = username;
@@ -49,7 +53,8 @@ public class User implements UserDetails {
                 @NotNull @Length(min = 8) String password,
                 @NotNull String email, Role role,
                 List<Project> administratedProjects,
-                List<Project> contributions) {
+                List<Project> contributions,
+                List<Task> tasks) {
 
         this.username = username;
         this.password = password;
@@ -57,6 +62,8 @@ public class User implements UserDetails {
         this.role = role;
         this.administratedProjects = administratedProjects;
         this.contributions = contributions;
+        this.tasks = tasks;
+
     }
 
     @Override

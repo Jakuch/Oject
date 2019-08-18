@@ -75,4 +75,11 @@ public class ProjectService {
         return projectToSet;
     }
 
+    public void addUserToProject(String username, Long id) {
+        Project project = projectRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No such project exists!"));
+        User user = (User) userDetailsService.loadUserByUsername(username);
+        project.getContributors().add(user);
+        user.getContributions().add(project);
+    }
 }

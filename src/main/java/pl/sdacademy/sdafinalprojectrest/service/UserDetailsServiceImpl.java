@@ -50,7 +50,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         getLoggedUser().getContributions().add(project);
     }
 
-    public void addContributorToProject(Project project){
+    public void addLoggedUserAsContributorToProject(Project project){
         getLoggedUser().getContributions().add(project);
     }
 }

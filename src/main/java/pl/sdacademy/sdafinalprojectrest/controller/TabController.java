@@ -43,7 +43,7 @@ public class TabController {
     }
 
 
-    @PutMapping("/{id")
+    @PutMapping("/{id}")
     public Tab updateTab(@RequestBody TabDto tabDto, @PathVariable Long id){
         return tabService.updateTab(tabDto, id);
     }

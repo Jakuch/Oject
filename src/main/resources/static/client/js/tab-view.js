@@ -1,19 +1,8 @@
 const tabId = window.location.hash.substr(1);
 
-$("#back-tab-btn").click(function () {
-
+$("#back-tab-btn").on("click",function () {
     const projectId = localStorage.getItem("projectId");
-
-    $.ajax({
-        url: "http://localhost:8080/projects/" + projectId,
-        method: "get",
-        success: function (project) {
-            $("#tab-template").hide();
-            $("#disp-project-title-single").text(project.title);
-            $("#disp-project-description-single").text(project.description);
-            window.location.href = "/client/project.html#" + projectId;
-        }
-    });
+    window.location.href = "/client/project.html#" + projectId;
 });
 
 $.ajax({
@@ -41,17 +30,19 @@ function reloadTasks(){
 
                 const task = tasks[i];
                 const $tabTask = $taskTemplate.clone();
-
                 $tabTask.find(".task-title").html(task.title);
                 $tabTask.find(".task-description").html(task.description);
                 $tabTask.find(".task-due-date").html(task.dueDate);
                 $tabTask.find(".task-story-points").html(task.storyPoints);
+                $tabTask.find(".task-btn-row").html(
+                    '<a href="edit-task.html#' + task.id + '" id="btn-set-contributors" class="btn btn-primary col text-wrap" style="font-size: small">Task settings</a>' +
+                    '<button title="Not implemented" id="btn-add-comment' + task.id + '" class="btn btn-primary col text-wrap" style="margin-left: 5px; font-size: small;">Add Comment</button>'
+                );
+                const taskContrib = task.contributors;
 
-                const taskContributors = task.contributors;
+                for(let i = 0; i < taskContrib.length; i++){
 
-                for(let i = 0; i < taskContributors.length; i++){
-
-                    const contributor = taskContributors[i];
+                    const contributor = taskContrib[i];
                     const $taskContributor = $taskContributorTmp.clone();
 
                     $taskContributor.find(".currently-working-user").html(contributor.username)
@@ -64,7 +55,9 @@ function reloadTasks(){
     })
 }
 
-$("#delete-tab-btn").click(function () {
+$("#delete-tab-btn").click(function (){
+    const projectId = localStorage.getItem("projectId");
+
     $.ajax({
         url: "http://localhost:8080/tabs/" + tabId,
         method: "delete",
@@ -74,15 +67,38 @@ $("#delete-tab-btn").click(function () {
     })
 });
 
-$("#edit-tab-btn").click(function () {
+
+$("#edit-tab-btn").on("click",function () {
     $.ajax({
         url: "http://localhost:8080/tabs/" + tabId,
         method: "get",
-        success: function () {
-            $("#disp-tab-title-single").html(
-                '<form><input type="text" value="' + tab.title + '"><button type="submit" name="Update" id="update-card"></button> </form>')
-        //    TODO
-
+        success: function(tab){
+            $("#tab-title-form").show();
+            $("#disp-tab-title-single").hide();
+            $("#updated-tab-title").val(tab.tabName);
         }
     })
-})
+});
+
+$("#btn-update-tab-title").on("click", function () {
+    const projectId = localStorage.getItem("projectId");
+
+    const updatedTabTitle = $("#updated-tab-title").val();
+    const updatedTab = {
+        tabName: updatedTabTitle,
+        projectId: projectId
+    };
+
+   $.ajax({
+       url: "http://localhost:8080/tabs/" + tabId,
+       data: JSON.stringify(updatedTab),
+       contentType: "application/json",
+       method: "put",
+       success: function () {
+           $("#tab-title-form").hide();
+           $("#disp-tab-title-single").show();
+           location.reload();
+       }
+   })
+});
+

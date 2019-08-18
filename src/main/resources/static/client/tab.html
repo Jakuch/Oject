@@ -20,7 +20,7 @@
     <script src="js/jquery-3.3.1.min.js" defer></script>
     <script src="js/login-logout.js" defer></script>
     <script src="js/tab-view.js" defer></script>
-    <script src="js/add-task.js" defer></script>
+    <script src="js/create-task.js" defer></script>
     <script src="js/edit-project-tab.js" defer></script>
 </head>
 <body>
@@ -63,9 +63,12 @@
     <div class="card" style="margin-bottom: 10px">
         <div class="card-header">
             <div class="row">
-                <h2 class="col-9" id="disp-tab-title-single">
-                </h2>
-                <form>
+                <div class="col-9" id="disp-tab-title-single" style="font-size: 32px"></div>
+                <form style="display: none" id="tab-title-form">
+                    <input type="text" id="updated-tab-title">
+                    <button type="submit" id="btn-update-tab-title" class="btn btn-primary">Update</button>
+                </form>
+                <div>
                     <div class="btn-toolbar col-3" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group mr-2" role="group" aria-label="First group">
                             <button type="submit" id="back-tab-btn"
@@ -87,7 +90,7 @@
                             </ul>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -106,43 +109,38 @@
                                 <p class="task-description text-wrap"></p>
                             </div>
                             <div style="padding: 0px 15px 0px 15px">
-                                <div class="row" style="margin-top: 10px">
-                                    <button title="Not implemented" class="btn btn-primary col text-wrap"
-                                            style="font-size: small">Start
-                                        Task
-                                    </button>
-                                    <button title="Not implemented" class="btn btn-primary col text-wrap"
-                                            style="margin-left: 5px; font-size: small;">Add Comment
-                                    </button>
+                                <div class="row task-btn-row" style="margin-top: 10px">
+
                                 </div>
-                                <div class="row" style="margin-top: 5px">
-                                    <button title="Not implemented" class="btn btn-primary col text-wrap"
-                                            style="font-size: small">Remove
-                                        task
-                                    </button>
-                                    <button title="Not implemented" class="btn btn-primary col text-wrap"
-                                            style="margin-left: 5px; font-size: small; ">Mark as Finished
-                                    </button>
+                                <div class="row task-second-btn-row" style="margin-top: 5px">
                                 </div>
                             </div>
                         </div>
                         <div class="col small-font-tab-footer card-footer text-muted">
                             <div class="row">
-                                <div>Due date:</div>
+                                <div>Due date:&nbsp;</div>
                                 <div class="task-due-date"></div>
                             </div>
                             <div class="row">
-                                <div>Story points:</div>
+                                <div>Story points:&nbsp;</div>
                                 <div class="task-story-points"></div>
                             </div>
-                            <div class="row">Currently assigned to:</div>
+                            <div class="row">Currently assigned to:&nbsp;</div>
                             <div class="current-users-list" id="task-contributor-tmp">
                                 <div class="row currently-working-user"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row card" style="margin-top: 15px">
-                        <div class="tab-comments-list">comments here</div>
+                        <div class="card text-wrap" style="padding: 15px 15px 15px 15px">
+                            <div class="tab-comments-list" style="display: none">
+                                <div class="card text-wrap" id="comment-tmp">
+                                    <p class="comment-text"></p>
+                                    <div class="small-font-tab-footer card-footer text-wrap">
+                                        <div>Comment by:&nbsp;</div>
+                                        <div class="comment-user"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
