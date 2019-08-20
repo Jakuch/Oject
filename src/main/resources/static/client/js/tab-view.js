@@ -24,7 +24,6 @@ function reloadTasks(){
         success: function (tasks) {
             const $taskTemplate = $("#task-template");
             const $taskList = $("#tasks-list");
-            const $taskContributorTmp = $("#task-contributor-tmp");
 
             for (let i =0; i < tasks.length; i++){
 
@@ -40,15 +39,12 @@ function reloadTasks(){
                 );
                 const taskContrib = task.contributors;
 
-                for(let i = 0; i < taskContrib.length; i++){
-
-                    const contributor = taskContrib[i];
-                    const $taskContributor = $taskContributorTmp.clone();
-
-                    $taskContributor.find(".currently-working-user").html(contributor.username)
-                    $taskContributor.removeAttr(".currently-working-user");
+                for(let j = 0; j < taskContrib.length; j++){
+                    const $userTmp = $("#contributor-tmp").clone();
+                    const contributor = taskContrib[j];
+                    $userTmp.html('<div>' + contributor.username + '</div>');
+                    $tabTask.find("#task-contributors-list").append($userTmp.html());
                 }
-
                 $taskList.append($tabTask.html());
             }
         }

@@ -1,7 +1,6 @@
 package pl.sdacademy.sdafinalprojectrest.model.project;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 
 import javax.persistence.*;
@@ -9,7 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Project {
 
@@ -54,8 +54,13 @@ public class Project {
     }
 
     public List<User> getContributorsById(List<Long> ids){
+        List<Long> userIds = contributors.stream()
+                .map(User::getId)
+                .filter(ids::contains)
+                .collect(Collectors.toList());
+
         return contributors.stream()
-                .filter(user -> user.getId().equals(id))
+                .filter(user -> userIds.contains(user.getId()))
                 .collect(Collectors.toList());
     }
 }

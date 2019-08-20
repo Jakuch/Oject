@@ -21,12 +21,11 @@ $.ajax({
                 const $userTmp = $("#user-tmp").clone();
                 const projectContributors = project.contributors;
 
-
                 for (let i=0; i < projectContributors.length; i++){
                     const contributor = projectContributors[i];
                     $userTmp.append(
                         '<div class="list-group-item row">' +
-                        '<input type="checkbox" value="' + contributor.id + '" id="contrib-name-id-' + contributor.id + '"><label for="contrib-name-id-' + contributor.id + '">' + contributor.username +'</label></div>'
+                        '<input type="checkbox" value="' + contributor.id + '" id="contrib-name-id-' + contributor.id + '"><label for="contrib-name-id-' + contributor.id + '">' + '&nbsp;' + contributor.username +'</label></div>'
                     );
                 }
                 $userTmp.removeAttr("#user-tmp");

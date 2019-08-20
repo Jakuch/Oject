@@ -1,8 +1,7 @@
 package pl.sdacademy.sdafinalprojectrest.model.project;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pl.sdacademy.sdafinalprojectrest.model.user.User;
 
 import javax.persistence.*;
@@ -11,7 +10,8 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Task {
 
     @Id

@@ -56,6 +56,7 @@ public class TaskService {
                 .filter(id -> taskDto.getContributors().contains(id))
                 .collect(Collectors.toList());
 
+
         task.setTab(foundTab);
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
